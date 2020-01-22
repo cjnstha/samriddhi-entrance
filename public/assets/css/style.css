@@ -1,0 +1,144 @@
+/* Custome Style */
+
+a {
+    text-decoration: none;
+    position: relative;
+    color: 
+    #000;
+}
+
+a:hover{ text-decoration: none; }
+
+.logo-holder {
+    top:5px;
+}
+
+.user-loginform.main-register .custom-form{
+    width: 100%;
+}
+
+.user-loginform.main-register{
+    background: #EEEEEE;
+}
+
+section.user-loginform .login_reg_wrap,
+.user-loginform .custom-form,
+.user-loginform .login_more{
+    width: 650px;
+}
+
+.custom-form .login-form-header {
+    margin-bottom: 30px;
+}
+
+.custom-form .login-form-header .login-form-title{
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.custom-form .login-form-header .login-form-logo img{
+    width: 150px;
+    display: inline-block;
+    padding: 15px 0;
+}
+
+.user-loginform .custom-form textarea, 
+.user-loginform .custom-form input[type="text"], 
+.user-loginform .custom-form input[type="email"], 
+.user-loginform .custom-form input[type="password"], 
+.user-loginform .custom-form input[type="button"]{
+    padding: 15px;
+    background: #fff;
+}
+
+.user-loginform .custom-form .filter-tags label{
+    top: 0;
+}
+
+.main-register .filter-tags{
+    margin: 15px 0;
+}
+
+.bottom-devider {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d0cfcf;
+    float: left;
+    width: 100%;
+}
+
+.fl-wrap label.hero-title {
+    text-align: left;
+    font-size: 18px;
+    color: #98AAB8;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.user-loginform .login_more {
+    float: none;
+    text-align: left;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.login_more li, .login_more span {
+    position: relative;
+    padding-left: 16px;
+    font-weight: 500;
+}
+
+.login_more span{
+    padding-left: 0;
+}
+
+.login_more li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #cccccc;
+    top: 45%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.login_more span, .login_more a{
+    font-size: 15px;
+    color: #999999;
+    line-height: 1.5;
+}
+
+.login_more a{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.filter-tags.radio label{
+    padding-left: 0;
+}
+
+.profile-edit-container .custom-form .filter-tags.radio label{
+    padding-left: 15px;
+    padding-right: 0;
+    top: 0;
+    margin-bottom: 0;
+}
+
+.user-loginform .custom-form .filter-tags input{
+    border-width: 2px;
+}
+
+.edit-profile-photo img.respimg{
+    border: 1px solid #EEEEEE;
+}
