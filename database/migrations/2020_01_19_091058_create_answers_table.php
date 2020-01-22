@@ -15,6 +15,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
              $table->bigIncrements('id');
+             $table->string('exam_code');
             $table->string('student_name');
             $table->string('question');
             $table->string('given_answer');

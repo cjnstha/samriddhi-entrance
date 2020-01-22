@@ -48,10 +48,13 @@
 										<input type="hidden" name="questions" value="{{$question->questions}} ">
 										<input type="hidden" name="student_name" value="{{$student_id}}">
 										<input type="hidden" name="true_answer" value="{{$question->answers}}">
-										{{-- <input type="hidden" name="exam_code" value="{{$uniqueid}}"> --}}
+										<input type="hidden" name="exam_code" value="{{$examCodeForValidate}}">
 										{{-- <input type="hidden" name="exam_code"> --}}
 										<button type="submit" class="tw-btn tw-btn-primary" id="submitbtn"></button>
 									</form>
+									<input type="hidden" id="hiddenVal" value="0">
+										<input type="hidden" id="merge_count" 
+										value="{{ \App\Merge::where('unique_id',$examCodeForValidate)->count()}}">
 								</div>
 							@endforeach
 						</div>
@@ -70,8 +73,16 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            $('#submitbtn').on('click',function(e){
+				let total_val = $("#merge_count").val();
+				var counter = $("#hiddenVal").val();
+	            counter++;
+	            $("#hiddenVal").val(counter);
+	            // if(total_val == counter){
+	            // 	window.location.href = '/student';
+	            // }
+        	});
         });
-
         $('.ansform').on('submit',function(e){
             var form = $(this);
             var submit = form.find("[type=submit]");

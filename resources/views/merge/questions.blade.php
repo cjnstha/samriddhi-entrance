@@ -99,6 +99,15 @@
         </div>
     </div>
 </section>
+    {{-- Modal --}}
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closemodal">&times;</span>
+        <p class="tw-text-red-500 tw-text-xl">Please copy the text below before closing me.</p>
+        <h1 id="string" class="tw-text-5xl tw-text-green-500"></h1>
+      </div>
+    </div>
+
 @endsection
 @section('scripts')
 <script>
@@ -169,10 +178,33 @@ $(document).ready(function() {
             data: {firstquestion:firstquestion,secondquestion:secondquestion,collection:collection},
             type: 'GET',
             success: function(data){
-                location.reload();
+                 modal.style.display = "block";
+                 $("#string").text(data);
             }
         });
     });
 });
+</script>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  location.reload();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 @endsection

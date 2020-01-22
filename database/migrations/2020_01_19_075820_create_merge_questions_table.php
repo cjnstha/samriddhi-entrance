@@ -16,7 +16,7 @@ class CreateMergeQuestionsTable extends Migration
         Schema::create('merge_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('questions');
-            $table->string('unique_id')->unique();
+            $table->string('unique_id');
             $table->string('collection');
             $table->string('choice1');
             $table->string('choice2');

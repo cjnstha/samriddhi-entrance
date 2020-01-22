@@ -98,7 +98,7 @@ class APIController extends Controller
         $string = Str::random(5);
 
         foreach($collections as $value) {
-           Merge::create([
+            Merge::create([
             'questions' => $value->questions,    
             'collection' => request('collection'),
             'unique_id' => $string,
@@ -109,6 +109,7 @@ class APIController extends Controller
             'answers' => $value->answers       
             ]);
         }
+        return $string;
     }
 }
 
