@@ -19,7 +19,7 @@ class CreateExaminfosTable extends Migration
             $table->string('course');
             $table->string('set');
             $table->integer('question_length');
-            // $table->string('uniqueid');
+            $table->string('uniqueid')->unique();
             $table->string('time')->nullable();
             $table->timestamps();
         });

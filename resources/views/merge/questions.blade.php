@@ -13,16 +13,6 @@
                 <div class="col-md-9">
                     <!-- Dashboard-container-->
                     <div>
-                        <div class="tw-bg-gray-300 hover:tw-rounded-lg md:tw-flex-row md:tw-mb-0 md:tw-mx-0 md:tw-px-0 md:tw-px-6 md:tw-py-0 md:tw-py-2 tw--mx-2  tw-cursor-pointer tw-flex tw-flex-col  tw-px-4 tw-py-2 tw-rounded-lg tw-transition-all tw-mb-2">
-                            <a class="tw-font-bold md:tw-text-base tw-tracking-tight tw-text-black hover:tw-text-black tw-m-0 hover:tw-underline" href="/home">Home</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-                                <g fill="none" fill-rule="evenodd" opacity="1">
-                                    <path stroke="#000" stroke-opacity=".012" stroke-width=".5" d="M1 21V.84h20.16V21z"></path>
-                                    <path fill="#000" d="M8.146 14.776l3.847-3.856-3.847-3.856L9.33 5.88l5.04 5.04-5.04 5.04z"></path>
-                                </g>
-                            </svg>
-                            <a  class="tw-font-bold md:tw-text-base tw-tracking-tight tw-text-black hover:tw-text-black tw-m-0 hover:tw-underline" href="{{ url()->current() }}">Reassign Controller</a>
-                        </div>
                         <div id="recipients" class="tw-p-8 tw-mt-6 tw-rounded tw-shadow tw-bg-white card tw-mt-4 hover:tw-border-blue-300">
                             <div class="tw-flex tw-w-full tw-justify-center tw-mb-4">
                                 <div class="tw-border-2 tw-p-2 tw-border-purple-500 tw-border-dashed tw-rounded-full tw-shadow-lg">
@@ -48,7 +38,7 @@
                                         </select>
                                     </div>
                                     <div class="filtered_list">
-                                        
+
                                     </div>
                                 </div>
 
@@ -68,30 +58,30 @@
                                         </select>
                                     </div>
                                     <div class="final_list">
-                                        
+
                                     </div>
-                                
-                                </div>  
+
+                                </div>
 
                             </div>
                             <div class="">
                                 <form action="" method="post">
                                     @csrf
-                                    <input type="text" type="hidden" id="js-first">    
-                                    <input type="text" type="hidden" id="js-second">  
+                                    <input type="text" type="hidden" id="js-first">
+                                    <input type="text" type="hidden" id="js-second">
                                     <div class="tw-flex tw-flex-row">
                                      <div class="tw-w-full tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-left">
                                       <label class="tw-block tw-uppercase tw-tracking-wide tw-text-gray-700 tw-text-xs tw-font-bold tw-mb-2" for="grid-city">
                                         Question Collection Name
                                       </label>
                                       <input class="tw-appearance-none tw-block tw-w-2/5 tw-bg-gray-200 tw-text-gray-700 tw-border tw-border-gray-200 tw-rounded tw-py-3 tw-px-4 tw-leading-tight tw-focus:tw-outline-none tw-focus:tw-bg-white tw-focus:tw-border-gray-500" id="js-collection" type="text" placeholder="Collection Name" name="collection">
-                                    </div>   
+                                    </div>
                                     <div class="tw-w-1/2 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-mt-6">
                                     <button type="submit" class=" tw-rounded-full tw-py-4 tw-px-4 tw-bg-red-400" id="js-merge">Merge Question</button>
                                 </div>
                                 </div>
                                 </form>
-                            </div>    
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,7 +162,7 @@ $(document).ready(function() {
         let firstquestion = $("#js-firstquestion").attr('js-firstquestion');
         let secondquestion = $("#js-secondquestion").attr('js-secondquestion');
         let collection = $("#js-collection").val();
-        
+
         $.ajax({
             url: './api/mergequestions',
             data: {firstquestion:firstquestion,secondquestion:secondquestion,collection:collection},
