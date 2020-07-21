@@ -21,16 +21,33 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('/merge-question')}}"
-                                   class="{{ Request::path() === '/merge-question' ? 'user-act-active' : ''}}">
-                                    <i class="fa fa-server"></i>
-                                    Merge Questions
+                                <a href="{{url('/edit-question')}}"
+                                   class="{{ Request::path() === '/entrance-exam' ? 'user-act-active' : ''}}">
+                                    <i class="fa fa-book"></i>
+                                    Edit Question
                                 </a>
                             </li>
-                            <li><a href="/account"><i class="fa fa-unlock-alt"></i>Change Password</a></li>
+{{--                            <li>--}}
+{{--                                <a href="{{url('/merge-question')}}"--}}
+{{--                                   class="{{ Request::path() === '/merge-question' ? 'user-act-active' : ''}}">--}}
+{{--                                    <i class="fa fa-server"></i>--}}
+{{--                                    Merge Questions--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         @endif
                     @endisset
                 </ul>
+
+                <a href="{{ route('logout') }}"
+                   class="tw-bg-blue-500 hover:tw-text-white tw-p-2 tw-text-white tw-rounded tw-shadow tw-text-base tw-border tw-border-gray-200"
+                   onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
             </div>
         </div>
     </div>

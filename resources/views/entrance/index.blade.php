@@ -47,17 +47,10 @@
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-lg-offset-3">
                                         <div class="custom-form">
                                             <div class="form-group">
-                                                <label class="col-form-label" for="formGroupExampleInput">Teacher
-                                                    Name</label>
-                                                <input type="text" name="teacher_name" class="form-control "
-                                                       id="exam_teacher" placeholder="Enter Teacher Name"
-                                                       autocomplete="off" required>
-                                            </div>
-                                            <div class="form-group">
                                                 <label class="col-form-label" for="formGroupExampleInput2">Course
                                                     Name</label>
                                                 <select name="course" class="form-control sumoselect">
-                                                    <option disabled="" selected="" value="Select Name">Select Name
+                                                    <option disabled="" selected="" value="Select Name">Select Course
                                                     </option>
                                                     <option value="English">English</option>
                                                     <option value="Mathematics">Mathematics</option>

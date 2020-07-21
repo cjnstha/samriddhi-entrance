@@ -37,7 +37,7 @@
 										</div>
 										<div class="tw-flex tw-flex-wrap-mx-3 tw-mb-4 tw-text-left">
 											<div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0">
-												<input class="" name="answers" value="" type="radio"> adasd 
+												<input class="" name="answers" value="" type="radio"> adasd
 											</div>
 											<div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0">
 												<input class="tw-mr-1" name="answers" value="" type="radio">asdasd
@@ -57,7 +57,7 @@
 										</div>
 										<div class="tw-flex tw-flex-wrap-mx-3 tw-mb-4 tw-text-left">
 											<div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0">
-												<input class="" name="answers" value="" type="radio"> adasd 
+												<input class="" name="answers" value="" type="radio"> adasd
 											</div>
 											<div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0">
 												<input class="tw-mr-1" name="answers" value="" type="radio">asdasd
@@ -113,19 +113,3 @@
         })
     </script>
 @endsection
-
-
-
-
-
-{{-- h3 class="tw-flex-row">{{$question->questions}} ?</h3>
-										<div class="col-lg-offset-1">
-											<input type="hidden" name="questions" value="{{$question->questions}} ">
-											<input type="hidden" name="student_name" value="{{$student_id}}">
-											<input type="hidden" name="true_answer" value="{{$question->answers}}">
-											<input name="answers" value="{{$question->choice1}}" type="radio"> {{$question->choice1}} <br>
-											<input name="answers" value="{{$question->choice2}}" type="radio">{{$question->choice2}}<br>
-											<input name="answers" value="{{$question->choice3}}" type="radio">{{$question->choice3}}<br>
-											<input name="answers" value="{{$question->choice4}}" type="radio">{{$question->choice4}}<br>
-											<input type="submit" name="submit" value="submit" class="btn btn-primary" id="submitbtn">
-										</div> --}}

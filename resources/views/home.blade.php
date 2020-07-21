@@ -16,9 +16,9 @@
                             <h1 class="tw-font-bold " style="font-size: 2.5rem;">Samriddhi Online Entrance Exam</h1>
                             <div class="tw-w-full tw-flex tw-justify-center tw-mt-4">
                                 <a
-                                    href="/student"
+                                    href="/results"
                                     class="tw-btn tw-bg-grey-panel tw-border-grey-panel tw-mb-4 lg:tw-py-4 tw-w-full lg:tw-w-64 tw-h-14 tw-inline-block btn-pulse wait-1s">
-                                    Give Exam
+                                    View Results
                                 </a>
                             </div>
                         </div>

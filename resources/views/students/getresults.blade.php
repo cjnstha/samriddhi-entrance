@@ -23,58 +23,20 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="tw-w-full tw-flex">
-                                    <div class="tw-w-full tw-flex">
-                                        <form method="GET" action="/results" autocomplete="off"
-                                              class="tw-w-full tw-flex"
-                                              style="height: 100%;">
-                                            @csrf
-                                            <div
-                                                class=" tw-bg-grey-panel search-form tw-rounded-full hidden md:tw-block md:tw-w-52 tw-mr-4"
-                                                style="border-radius: 9999px;background-color:#f6f6f6;">
-                                                <input name="q"
-                                                       autocomplete="off"
-                                                       placeholder="Enter the code to get the results"
-                                                       class=" tw-rounded-full focus:tw-outline-none tw-pt-0 tw-text-sm tw-w-full tw-h-8 tw-pl-2"
-                                                       style="background-color:#f6f6f6;width: 366px;"
-                                                >
-                                            </div>
-                                            <div>
-                                                <button type="submit"
-                                                        class="tw-border tw-border-2 tw-border-gray-400 tw-px-4 tw-py-2 tw-rounded-full hover:tw-border-blue-400 tw-shadow-2xl hover:tw-text-blue-400">
-                                                    Search
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="garde_selector"
+                                           class="tw-table tw-font-black tw-text-blue-800 tw-text-base">Select
+                                        Year :</label>
+                                    <select id="garde_selector" class="form-control">
+                                        <option selected disabled>Select Year</option>
+                                        @foreach($dates as $item=>$value)
+                                            <option value="{{ $item }}">{{ $item }}</option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
-                                @isset($students)
-                                    <table class="tw-stripe tw-hover hoverTable tw-text-base tw-mt-5"
-                                           style="width: 100%; padding-top: 1em; padding-bottom: 1em;">
-                                        <thead>
-                                        <tr>
-                                            <th data-priority="1">S.N</th>
-                                            <th data-priority="2">Student Name</th>
-                                            <th data-priority="2">ID No.</th>
-                                            <th data-priority="2">Marks gained</th>
-                                            <th data-priority="2">Created Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @forelse($students as $key=>$student)
-                                            <tr>
-                                                <td>{{ ++$key }}</td>
-                                                <td> {{ $student->student_name }}</td>
-                                                <td> {{ $student->uniqueid }}</td>
-                                                <td> {{ $student->marks }}</td>
-                                                <td> {{ $student->created_at->diffForHumans() }}</td>
-                                            </tr>
-                                        @empty
-                                            <h2>Sorry, No result found.</h2>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
-                                @endisset
+                                <div class="section_selector"></div>
                             </div>
                         </div>
                     </div>
@@ -82,4 +44,26 @@
             </div>
         </div>
     </section>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#garde_selector').on('change', function (e) {
+                $.ajax({
+                    url: 'api/filter-results',
+                    data: {year: $(this).val()},
+                    type: 'GET',
+                    success: function (data) {
+                        $('.section_selector').html(data);
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection

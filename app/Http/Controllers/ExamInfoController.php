@@ -22,12 +22,10 @@ class ExamInfoController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
-    public function store(Request $request)
+    public function store()
     {
-
-        $examinfo = new Examinfo;
         $examinfo = Examinfo::create([
-            'teacher_name' => request('teacher_name'),
+            'teacher_name' => auth()->user()->name,
             'course' => request('course'),
             'set' => request('set'),
             'question_length' => request('question_length'),

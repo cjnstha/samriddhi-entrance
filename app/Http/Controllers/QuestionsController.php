@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\Questions;
-use App\ExamInfo;
+use App\Examinfo;
 use DB;
 use App\Merge;
+use Illuminate\View\View;
 
 class QuestionsController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -20,7 +23,7 @@ class QuestionsController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      * @throws \Exception
      */
     public function store(Request $request)
@@ -40,11 +43,11 @@ class QuestionsController extends Controller
 
         $set = request('set_value');
 
-        $qustionCount = Questions::where('question_unique', '=',request('uniqueid'))->count(); // Scope not clear only counting the set A or B
-        $selectLenth = ExamInfo::where('id', '=', $set)->value('question_length'); //Gives total question length
+        $qustionCount = Questions::where('question_unique', '=', request('uniqueid'))->count(); // Scope not clear only counting the set A or B
+        $selectLenth = Examinfo::where('id', '=', $set)->value('question_length'); //Gives total question length
 
         if ($qustionCount < $selectLenth) {
-            $examinfo = ExamInfo::find($set);
+            $examinfo = Examinfo::find($set);
             return view('makequestion.create', ['examinfo' => $examinfo]);
         } else {
             // $uniqueId=Examinfo::where('id','=',$id)->value('uniqueid');
@@ -53,7 +56,7 @@ class QuestionsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function mergeQuestion()
     {
@@ -75,5 +78,43 @@ class QuestionsController extends Controller
             'question' => request($collection)
         ]);
         return $merge;
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function view()
+    {
+        $questions = Questions::latest()->get();
+        return view('makequestion.viewquestion', compact('questions'));
+    }
+
+    /**
+     * @param Questions $question
+     * @return Application|Factory|View
+     */
+    public function edit(Questions $question)
+    {
+        return view('makequestion.editquestion', compact('question'));
+    }
+
+    public function update(Questions $question)
+    {
+        $question = $question->update([
+            'questions' => request('questions'),
+            'choice1' => request('choice1'),
+            'choice2' => request('choice2'),
+            'choice3' => request('choice3'),
+            'choice4' => request('choice4'),
+            'answers' => request('answers')
+        ]);
+        return redirect()->back();
+    }
+
+    public function destroy(Questions $question)
+    {
+        $question->delete();
+        return redirect()->back();
+
     }
 }

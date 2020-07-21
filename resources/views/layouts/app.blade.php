@@ -32,12 +32,26 @@
 </div>
 <!--=============== scripts  ===============-->
 
-<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ asset('assets/js/jquery.min.js')}}"><\/script>')</script>
-<script src="{{asset ('assets/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{asset ('assets/js/plugins.js')}}"></script>
-<script src="{{asset ('assets/js/scripts.js')}}"></script>
-<script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
+                }
+            ]
+        });
+    });
+</script>
 @yield('scripts')
 </body>
 </html>
