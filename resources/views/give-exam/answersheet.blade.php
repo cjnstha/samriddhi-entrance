@@ -19,41 +19,50 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="js-change-after-ajax">
+                                <div id="clock"
+                                     class="lg:tw-fixed lg:tw-w-full tw-z-10 tw-font-bold tw-text-3xl tw-text-black"
+                                     style="display: flex;top: 46px;left: 80rem;">
+                                </div>
+                                <div class="js-change-after-ajax" id="exam">
                                     @foreach($questions as $key=>$question)
-                                        <div class="tw-w-full tw-flex tw-justify-center tw-mb-4 js-content tw-border-2 tw-shadow-md tw-py-4 hover:tw-bg-gray-400"
-                                             id="content">
+                                        <div
+                                            class="tw-w-full tw-flex tw-justify-center tw-mb-4 js-content tw-border-2 tw-shadow-md tw-py-4 hover:tw-bg-gray-400"
+                                            id="content">
                                             <form method="post" action="{{url('/answer')}}" class="ansform tw-w-3/5">
                                                 {{csrf_field()}}
                                                 <p class=" tw-text-lg tw-underline">Question {{ ++$key }}</p>
                                                 <div class="tw-mb-6 tw-flex">
-                                                    <h3 class="tw-font-bold tw-text-black tw-text-lg tw-ml-2 ">{{$question->questions}}</h3>
+                                                    <h3 class="tw-font-bold tw-text-black tw-text-lg tw-ml-2 ">{!! $question->questions !!}</h3>
                                                 </div>
                                                 <div class="tw-flex tw-flex-wrap-mx-3 tw-mb-4 tw-text-left">
-                                                    <div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-4 tw-md:tw-mb-0 tw-text-base">
+                                                    <div
+                                                        class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-4 tw-md:tw-mb-0 tw-text-base">
                                                         <input class="asdsds" name="answers"
-                                                               value="{{$question->choice1}}"
+                                                               value="{{ $question->choice1  }}"
                                                                type="radio" required>
-                                                        {{$question->choice1}}
+                                                        {!! $question->choice1  !!}
                                                     </div>
-                                                    <div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
+                                                    <div
+                                                        class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
                                                         <input class="tw-mr-1" name="answers"
-                                                               value="{{$question->choice2}}"
+                                                               value="{{ $question->choice2 }}"
                                                                type="radio" required>
-                                                        {{$question->choice2}}
+                                                        {!! $question->choice2 !!}
                                                     </div>
                                                 </div>
                                                 <div class="tw-flex tw-flex-wrap-mx-3 tw-mb-4 tw-text-left">
-                                                    <div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
-                                                        <input class="" name="answers" value="{{$question->choice3}}"
+                                                    <div
+                                                        class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
+                                                        <input class="" name="answers" value="{{ $question->choice3  }}"
                                                                type="radio" required>
-                                                        {{$question->choice3}}
+                                                        {!! $question->choice3  !!}
                                                     </div>
-                                                    <div class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
+                                                    <div
+                                                        class="tw-w-full tw-md:tw-w-1/3 tw-px-3 tw-mb-6 tw-md:tw-mb-0 tw-text-base">
                                                         <input class="tw-mr-1" name="answers"
-                                                               value="{{$question->choice4}}"
+                                                               value="{{ $question->choice4 }}"
                                                                type="radio" required>
-                                                        {{$question->choice4}}
+                                                        {!! $question->choice4  !!}
                                                     </div>
                                                 </div>
                                                 <input type="hidden" name="questions" value="{{$question->questions}} ">
@@ -76,6 +85,19 @@
                                     <input type="hidden" id="merge_count"
                                            value="{{ $countedQuestion }}">
                                 </div>
+                                <div id="js-display">
+                                    <div
+                                        class="question container tw-overflow-auto lg:tw-mx-auto lg:tw-px-0 tw-w-full lg:tw-max-h-4/5 tw-mt-10">
+                                        <div
+                                            class=""
+                                        >
+                                            <h2 class="tw-w-full tw-flex tw-items-center tw-text-grey-dark tw-text-3xl tw-justify-center">Time's up</h2>
+                                            <h2 class="tw-w-full tw-flex tw-items-center tw-text-grey-dark tw-text-3xl tw-justify-center tw-mt-2">
+                                                We will contact you soon. Thank you for participating in exam.
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,6 +107,24 @@
     </section>
 @endsection
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var fiveSeconds = new Date().getTime() + 5000;
+            $('#clock').countdown(fiveSeconds, {elapse: true})
+                .on('update.countdown', function (event) {
+                    var $this = $(this);
+                    if (event.elapsed) {
+                        $("#exam").hide("slow", function () {
+                            $("#js-display").show()
+                                .delay(3000);
+                        });
+                    } else {
+                        $this.html(event.strftime('<span>%H:%M:%S</span>'));
+                    }
+                });
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             function extracted() {
@@ -149,4 +189,5 @@
 
         });
     </script>
+
 @endsection
