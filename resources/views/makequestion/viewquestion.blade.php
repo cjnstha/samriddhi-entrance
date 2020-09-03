@@ -30,7 +30,7 @@
                                     @forelse($questions as $key=>$question)
                                         <tr>
                                             <td class="tw-border tw-px-4 tw-py-2">{{ ++$key }}</td>
-                                            <td class="tw-border tw-px-4 tw-py-2">{{ $question->questions }}</td>
+                                            <td class="tw-border tw-px-4 tw-py-2">{!! $question->questions !!}</td>
                                             <td class="tw-border tw-px-4 tw-py-2 tw-flex">
                                                 <a
                                                     href="/edit-question/{{ $question->id }}"

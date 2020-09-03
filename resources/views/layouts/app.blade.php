@@ -39,6 +39,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
 <script>
+(function($) {
+	function toggle_visibility(){
+		$('.button').click(function(){
+			$('.exam-crud').slideDown('slow',function(){
+			});
+		});
+	}
+	    $(document).ready(function() {
+	       toggle_visibility();
+	    });
+    $(window).resize(function() {
+    });
+    $(window).scroll(function() {
+    });
+    $(window).load(function() {
+    });
+})(window.jQuery);
+</script>
+
+<script>
     $(document).ready(function () {
         $('#example').DataTable({
             dom: 'Bfrtip',

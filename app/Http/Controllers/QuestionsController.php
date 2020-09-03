@@ -28,6 +28,7 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
+//        dd(request()->all());
         $question = new Questions;
         $question = Questions::create([
             'set_name' => request('set_name'),
